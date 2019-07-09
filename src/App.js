@@ -12,29 +12,34 @@ import { Chart, ChartBar, ChartStack } from '@patternfly/react-charts';
 import './styles/App.css';
 
 /**
- * @apiMock {DelayResponse} 2000
  * @api {get} /api/testo Get mock data
  *
  * @apiSuccessExample {json} Success-Response:
  *     HTTP/1.1 200 OK
  *     {
  *       "data": [
- *          { x: 'May 25', y: 1 },
- *          { x: 'May 26', y: 2 }
+ *          { "x": "May 25", "y": 1 },
+ *          { "x": "May 26", "y": 2 }
+ *       ]
  *     }
  */
 class App extends Component {
   state = { data: [] };
 
   componentDidMount() {
-    // $.get('http://localhost:5000/api/testo', data => {
-      // console.log(data);
-      // this.setState({ data: success.data })
-    // });
+    $.ajax({
+      url: 'http://localhost:5000/api/testo',
+      success: success => {
+        this.setState({ data: success.data })
+      },
+      dataType: 'json'
+    });
   }
 
   render() {
-    // const { data } = this.state;
+    const { data } = this.state;
+
+    console.log('Ajax/API mock data, open your console to see me --->', data);
 
     const chartData = [
       { x: 'May 25', y: 1 },
