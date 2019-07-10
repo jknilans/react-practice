@@ -1,0 +1,12 @@
+
+.hello-world {
+  text-decoration: underline;
+}
+
+.curiosity-usage-graph .stack-chart-container svg > g:nth-child(2) > g {
+  display: none;
+}
+
+.curiosity-usage-graph .stack-chart-container svg > g:nth-child(2) > g:nth-child(5n-3) {
+  display: block;
+}
